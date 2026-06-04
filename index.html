@@ -280,6 +280,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#booking">Book</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -450,11 +451,22 @@
     </div>
   </section>
 
+  <!-- BOOKING -->
+  <section id="booking" style="background:var(--cream);">
+    <div class="container">
+      <p class="section-label">Book a Consultation</p>
+      <h2 class="section-title">Pick a Time That Works for You</h2>
+      <p class="section-sub">Choose a slot below and Kanika will get back to you to discuss your dream event.</p>
+      <!-- Cal.com inline embed — change "dreamycorner" to your actual Cal.com username -->
+      <div id="cal-booking" style="width:100%;min-height:600px;border-radius:1.4rem;overflow:hidden;box-shadow:0 4px 24px rgba(43,28,42,0.09);"></div>
+    </div>
+  </section>
+
   <!-- CTA BANNER -->
   <section class="cta-banner">
     <h2>Your Dream Event Starts Here ✦</h2>
     <p>Limited bookings available — reach out today to secure your date.</p>
-    <a href="tel:+61489298244" class="btn btn-white">Book with Kanika</a>
+    <a href="#booking" class="btn btn-white">Book Now</a>
   </section>
 
   <!-- FOOTER -->
@@ -467,5 +479,51 @@
     </p>
   </footer>
 
+  <!-- Cal.com embed script -->
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["-", namespace, ar]);
+          } else {
+            p(cal, ar);
+            p(cal, ["-", ar]);
+          }
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    Cal("init", { origin: "https://cal.com" });
+
+    Cal("inline", {
+      elementOrSelector: "#cal-booking",
+      calLink: "dreamycorner",   // ← change this to your Cal.com username
+      layout: "month_view"
+    });
+
+    Cal("ui", {
+      theme: "light",
+      styles: { branding: { brandColor: "#e8577a" } },
+      hideEventTypeDetails: false
+    });
+  </script>
 </body>
 </html>
